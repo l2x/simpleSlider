@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>simpleSlider</title>
+<style type="text/css">
+*{margin:0;padding:0}
+ul,li,ol,dl,dt,dd{list-style:none}
+div{display:-webkit-box;-webkit-box-flex:1}
+.wrapper{width:100%;height:200px;overflow:hidden;-webkit-box-orient:vertical;}
+.wrapper_i{display:-webkit-box;-webkit-box-flex:1;-webkit-backface-visibility:none;}
+.wrapper_i>li{display:-webkit-box;width:320px;}
+.ind{display:-webkit-box;height:20px;-webkit-box-pack:center;-webkit-box-align:center;}
+.ind>li{width:8px;height:8px;border-radius:4px;background:#B3B3B3;line-height:99em;overflow:hidden;margin:0 5px}
+.ind>.active{background:#F13131}
+</style>
+	
+</head>
+
+<body>
+<div id="wrapper" class="wrapper">
+	<ul class="wrapper_i">
+		<li><img src="images/1.jpg" width="320" height="180"></li>
+		<li><img src="images/2.jpg" width="320" height="180"></li>
+		<li><img src="images/3.jpg" width="320" height="180"></li>
+		<li><img src="images/4.jpg" width="320" height="180"></li>
+	</ul>
+	<ul class="ind"><li class="active">1</li><li>1</li><li>1</li><li>1</li></ul>
+</div>
+
+	
+<script type="text/javascript" src="../../simpleSlider.js"></script>
+<script type="text/javascript">
+var ind = document.querySelector('.ind');
+var slider = new simpleSlider('#wrapper',{
+    activeClass:false,
+    onMoveEnd:function(){
+        ind.querySelector('.active').className='';
+        ind.querySelectorAll('li')[this.pageIndex].className = 'active';
+    }
+});
+</script>
+
+</body>
+</html>
